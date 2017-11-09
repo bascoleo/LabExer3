@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("data", etData.getText().toString());
         editor.commit();
-        Toast.makeText(this, "Preferences Saved!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Preferences Saved!!", Toast.LENGTH_SHORT).show();
     }
 
     public void internalStore (View view) {
