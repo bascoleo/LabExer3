@@ -7,120 +7,130 @@
     tools:context="com.leobasco.labexer3.MainActivity">
 
     <TextView
+        android:id="@+id/tvData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date:"
-        android:paddingLeft="60dp"
-        android:textSize="18sp"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="24dp" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:paddingLeft="60dp"
+        android:text="Data"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/etData"
+        android:id="@+id/et_data"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView"
-        android:layout_alignBottom="@+id/textView"
+        android:layout_alignBaseline="@+id/tvData"
+        android:layout_alignBottom="@+id/tvData"
         android:layout_marginLeft="17dp"
         android:layout_marginStart="17dp"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/tvFilename"
+        android:layout_toRightOf="@+id/tvFilename"
+        android:hint="Data"
         android:inputType="text"
         android:paddingTop="75dp" />
 
     <TextView
+        android:id="@+id/tvFilename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Filename:"
-        android:paddingTop="75dp"
-        android:paddingLeft="60dp"
-        android:textSize="18sp"
-        android:id="@+id/textView2"
-        android:layout_alignBaseline="@+id/tvData"
-        android:layout_alignBottom="@+id/tvData"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="60dp"
+        android:paddingTop="75dp"
+        android:text="Filename:"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/etFilename"
+        android:id="@+id/et_filename"
         android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignLeft="@+id/etData"
-        android:layout_alignStart="@+id/etData"
         android:inputType="text"
-        android:paddingTop="75dp" />
+        android:layout_height="wrap_content"
+        android:paddingTop="75dp"
+        android:hint="Filename"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/et_data"
+        android:layout_alignStart="@+id/et_data" />
 
     <Button
-        android:id="@+id/btn_Shared"
+        android:id="@+id/btn_SP"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Shared Preferences"
-        android:onClick="sharedPref"
-        android:layout_below="@+id/etFilename"
         android:layout_alignLeft="@+id/btn_IS"
-        android:layout_alignStart="@+id/btn_IS" />
+        android:layout_alignStart="@+id/btn_IS"
+        android:layout_below="@+id/et_filename"
+        android:layout_marginTop="20dp"
+        android:onClick="saveSharedPreference"
+        android:text="Shared Preferences"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/btn_IS"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Internal Storage"
-        android:onClick="internalStore"
-        android:layout_below="@+id/btn_Shared"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/btn_SP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:onClick="saveInternalStorage"
+        android:text="Internal Storage" />
 
     <Button
         android:id="@+id/btn_IC"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Internal Cache"
-        android:onClick="intCache"
         android:layout_below="@+id/btn_IS"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:onClick="saveInternalCache"
+        android:text="Internal Cache" />
 
     <Button
         android:id="@+id/btn_EC"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="External Cache"
-        android:onClick="extCache"
-        android:layout_below="@+id/btn_IC"
         android:layout_alignLeft="@+id/btn_IC"
-        android:layout_alignStart="@+id/btn_IC" />
+        android:layout_alignStart="@+id/btn_IC"
+        android:layout_below="@+id/btn_IC"
+        android:layout_marginTop="5dp"
+        android:onClick="saveExternalCache"
+        android:text="External Cache" />
 
     <Button
         android:id="@+id/btn_ES"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="External Storage"
-        android:onClick="extStorage"
-        android:layout_below="@+id/btn_EC"
         android:layout_alignLeft="@+id/btn_EC"
-        android:layout_alignStart="@+id/btn_EC" />
+        android:layout_alignStart="@+id/btn_EC"
+        android:layout_below="@+id/btn_EC"
+        android:layout_marginTop="5dp"
+        android:onClick="saveExternalStorage"
+        android:text="External Storage" />
 
     <Button
-        android:id="@+id/btn_EPS"
+        android:id="@+id/btn_EP"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="External Public Storage"
-        android:onClick="extPublic"
-        android:layout_below="@+id/btn_ES"
         android:layout_alignLeft="@+id/btn_ES"
-        android:layout_alignStart="@+id/btn_ES" />
+        android:layout_alignStart="@+id/btn_ES"
+        android:layout_below="@+id/btn_ES"
+        android:layout_marginTop="5dp"
+        android:onClick="saveExternalPublic"
+        android:text="External Public Storage" />
 
     <Button
         android:id="@+id/btn_Next"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:layout_alignLeft="@+id/btn_EP"
+        android:layout_alignStart="@+id/btn_EP"
+        android:layout_below="@+id/btn_EP"
+        android:layout_marginTop="5dp"
         android:onClick="next"
-        android:layout_below="@+id/btn_EPS"
-        android:layout_alignLeft="@+id/btn_EPS"
-        android:layout_alignStart="@+id/btn_EPS" />
+        android:text="Next" />
 
 </RelativeLayout>

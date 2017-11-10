@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText etData, et_Filename;
+    EditText et_Data, et_Filename;
     Button btn_Shared, btn_IS, btn_IC, btn_EC, btn_ES, btn_EPS, btn_Next;
     FileOutputStream fos;
 
@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etData = (EditText) findViewById(R.id.etData);
-        et_Filename = (EditText) findViewById(R.id.etFilename);
-        btn_Shared = (Button) findViewById(R.id.btn_Shared);
-        btn_IS = (Button) findViewById(R.id.btn_IS);
-        btn_IC = (Button) findViewById(R.id.btn_IC);
-        btn_EC = (Button) findViewById(R.id.btn_EC);
-        btn_ES = (Button) findViewById(R.id.btn_ES);
-        btn_EPS = (Button) findViewById(R.id.btn_EPS);
-        btn_Next = (Button) findViewById(R.id.btn_Next);
+        et_Data = (EditText)findViewById(R.id.et_data);
+        et_Filename = (EditText)findViewById(R.id.et_filename);
+        btn_Shared = (Button)findViewById(R.id.btn_SP);
+        btn_IS = (Button)findViewById(R.id.btn_IS);
+        btn_IC = (Button)findViewById(R.id.btn_IC);
+        btn_EC = (Button)findViewById(R.id.btn_EC);
+        btn_ES = (Button)findViewById(R.id.btn_ES);
+        btn_EPS = (Button)findViewById(R.id.btn_EP);
+        btn_Next = (Button)findViewById(R.id.btn_Next);
     }
 
     public void next (View view) {
@@ -63,16 +63,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void sharedPref (View view) {
+    public void saveSharedPreference (View view) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("data", etData.getText().toString());
+        editor.putString("data", et_Data.getText().toString());
         editor.commit();
-        Toast.makeText(this, "Preferences Saved!!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Preferences Saved!", Toast.LENGTH_SHORT).show();
     }
 
-    public void internalStore (View view) {
-        String message = etData.getText().toString();
+    public void saveInternalStorage (View view) {
+        String message = et_Data.getText().toString();
         String filename = et_Filename.getText().toString();
         try {
             fos = openFileOutput(filename + ".txt", Context.MODE_PRIVATE);
@@ -91,38 +91,38 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Storage saved!", Toast.LENGTH_SHORT).show();
     }
 
-    public void intCache(View view){
+    public void saveInternalCache(View view){
         String filename = et_Filename.getText().toString();
         File folder = getCacheDir();
         File file = new File(folder, filename + ".txt");
-        String message = etData.getText().toString();
+        String message = et_Data.getText().toString();
         writeData(file, message);
         Toast.makeText(this,"Successfully written to internal cache!", Toast.LENGTH_LONG).show();
     }
 
-    public void extCache (View view) {
+    public void saveExternalCache (View view) {
         String filename = et_Filename.getText().toString();
         File folder = getExternalCacheDir();
         File file = new File(folder, filename + ".txt");
-        String message = etData.getText().toString();
+        String message = et_Data.getText().toString();
         writeData(file, message);
         Toast.makeText(this, "Successfully written to external cache!", Toast.LENGTH_LONG).show();
     }
 
-    public void extStorage (View view) {
+    public void saveExternalStorage (View view) {
         String filename = et_Filename.getText().toString();
         File folder = getExternalFilesDir("Leo Basco");
         File file = new File(folder, filename + ".txt");
-        String message = etData.getText().toString();
+        String message = et_Data.getText().toString();
         writeData(file, message);
         Toast.makeText(this, "Successfully written to external storage!", Toast.LENGTH_LONG).show();
     }
 
-    public void extPublic (View view) {
+    public void saveExternalPublic (View view) {
         String filename = et_Filename.getText().toString();
         File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         File file = new File (folder, filename + ".txt");
-        String message = etData.getText().toString();
+        String message = et_Data.getText().toString();
         writeData(file, message);
         Toast.makeText(this, "Successfully written to external public storage!", Toast.LENGTH_LONG).show();
     }

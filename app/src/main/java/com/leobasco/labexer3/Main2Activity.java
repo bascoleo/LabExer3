@@ -19,10 +19,10 @@ import java.io.InputStreamReader;
 
 public class Main2Activity extends AppCompatActivity {
 
-    TextView tvData;
+    TextView tv_Display;
     FileInputStream fis;
     BufferedReader br;
-    Button btn_Shared, btn_IS, btn_IC, btn_EC, btn_ES, btn_EPS, btn_Previous;
+    Button btn_Shared, btn_IS, btn_IC, btn_EC, btn_ES, btn_EPS, btn_Prev;
 
 
     @Override
@@ -30,29 +30,29 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        tvData = (TextView) findViewById(R.id.tvData);
-        btn_Shared = (Button) findViewById(R.id.btn_Shared);
-        btn_IS = (Button) findViewById(R.id.btn_IS);
-        btn_IC = (Button) findViewById(R.id.btn_IC);
-        btn_EC = (Button) findViewById(R.id.btn_EC);
-        btn_ES = (Button) findViewById(R.id.btn_ES);
-        btn_EPS = (Button) findViewById(R.id.btn_EPS);
-        btn_Previous = (Button) findViewById(R.id.btn_Previous);
+        tv_Display = (TextView)findViewById(R.id.tvDisplay);
+        btn_Shared = (Button)findViewById(R.id.btn_SP);
+        btn_IS = (Button)findViewById(R.id.btn_IS);
+        btn_IC = (Button)findViewById(R.id.btn_IC);
+        btn_EC = (Button)findViewById(R.id.btn_EC);
+        btn_ES = (Button)findViewById(R.id.btn_ES);
+        btn_EPS = (Button)findViewById(R.id.btn_EP);
+        btn_Prev = (Button)findViewById(R.id.btn_Previous);
 
     }
 
-    public void prev (View view) {
+    public void previous (View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void sharedPref(View view) {
+    public void loadSharedPreference(View view) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());;
         String data = preferences.getString("data","");
-        tvData.setText(data);
+        tv_Display.setText(data);
     }
 
-    public void internalStore (View view) throws IOException {
+    public void loadInternalStorage (View view) throws IOException {
         String newline = "";
         String data = "";
         try{
@@ -66,10 +66,10 @@ public class Main2Activity extends AppCompatActivity {
         } catch (IOException e){
             e.printStackTrace();
         }
-        tvData.setText(data);
+        tv_Display.setText(data);
     }
 
-    public void intCache(View view) throws FileNotFoundException {
+    public void loadInternalCache(View view) throws FileNotFoundException {
         String newline = "";
         String data = "";
         File folder = getCacheDir();
@@ -85,10 +85,10 @@ public class Main2Activity extends AppCompatActivity {
         } catch (IOException e){
             e.printStackTrace();
         }
-        tvData.setText(data);
+        tv_Display.setText(data);
     }
 
-    public void extCache(View view) throws FileNotFoundException {
+    public void loadExternalCache(View view) throws FileNotFoundException {
         String newline = "";
         String data = "";
         File folder = getExternalCacheDir();
@@ -104,10 +104,10 @@ public class Main2Activity extends AppCompatActivity {
         } catch (IOException e){
             e.printStackTrace();
         }
-        tvData.setText(data);
+        tv_Display.setText(data);
     }
 
-    public void extStorage (View view) throws FileNotFoundException {
+    public void loadExternalStorage (View view) throws FileNotFoundException {
         String newline = "";
         String data = "";
         File folder = getExternalFilesDir("Leo Basco");
@@ -123,10 +123,10 @@ public class Main2Activity extends AppCompatActivity {
         } catch (IOException e){
             e.printStackTrace();
         }
-        tvData.setText(data);
+        tv_Display.setText(data);
     }
 
-    public void extPublic (View view) throws FileNotFoundException {
+    public void loadExternalPublic (View view) throws FileNotFoundException {
         String newline = "";
         String data = "";
         File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
@@ -142,7 +142,7 @@ public class Main2Activity extends AppCompatActivity {
         } catch (IOException e){
             e.printStackTrace();
         }
-        tvData.setText(data);
+        tv_Display.setText(data);
 
     }
 }
